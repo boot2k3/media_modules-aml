@@ -4916,10 +4916,9 @@ void vdec_prepare_run(struct vdec_s *vdec, unsigned long mask)
 		if (is_support_dual_core()) {
 			if (mask & CORE_MASK_HEVC_BACK)
 			{
-				if (decoder_firmware_version_eg(0, 4, 128))
-					tee_config_device_state(DMC_DEV_ID_HEVC_B, secure);
-				else
-					tee_config_device_state(DMC_DEV_ID_HEVC, secure);
+				//disable DMC_DEV_ID_HEVC_B temporary, as it absent in TA or BL for now
+				//tee_config_device_state(DMC_DEV_ID_HEVC_B, secure);
+				tee_config_device_state(DMC_DEV_ID_HEVC, secure);
 			}
 		} else {
 			if (mask & CORE_MASK_HEVC)
@@ -4931,18 +4930,16 @@ void vdec_prepare_run(struct vdec_s *vdec, unsigned long mask)
 				tee_config_device_state(DMC_DEV_ID_HEVC, secure);
 				if (!front_back_mode)
 				{
-					if (decoder_firmware_version_eg(0, 4, 128))
-						tee_config_device_state(DMC_DEV_ID_HEVC_B, secure);
-					else
-						tee_config_device_state(DMC_DEV_ID_HEVC, secure);
+					//disable DMC_DEV_ID_HEVC_B temporary, as it absent in TA or BL for now
+					//tee_config_device_state(DMC_DEV_ID_HEVC_B, secure);
+					tee_config_device_state(DMC_DEV_ID_HEVC, secure);
 				}
 			}
 			if (mask & CORE_MASK_HEVC_BACK)
 			{
-				if (decoder_firmware_version_eg(0, 4, 128))
-					tee_config_device_state(DMC_DEV_ID_HEVC_B, secure);
-				else
-					tee_config_device_state(DMC_DEV_ID_HEVC, secure);
+				//disable DMC_DEV_ID_HEVC_B temporary, as it absent in TA or BL for now
+				//tee_config_device_state(DMC_DEV_ID_HEVC_B, secure);
+				tee_config_device_state(DMC_DEV_ID_HEVC, secure);
 			}
 		} else {
 			if (mask & CORE_MASK_HEVC)
