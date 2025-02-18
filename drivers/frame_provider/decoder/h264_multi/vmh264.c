@@ -6063,7 +6063,7 @@ static int get_dec_dpb_size(struct vdec_h264_hw_s *hw, int mb_width,
 				"max_dec_frame_buffering larger than MaxDpbSize.\n");
 		}
 		size_vui = imax (1, p_H264_Dpb->max_dec_frame_buffering);
-		if (size_vui < size) {
+		if (size_vui < size -1) {
 			dpb_print(DECODE_ID(hw), 0,
 				"Warning: max_dec_frame_buffering(%d) is less than DPB size(%d) calculated from Profile/Level.\n",
 				size_vui, size);
