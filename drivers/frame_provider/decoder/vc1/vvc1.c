@@ -94,7 +94,10 @@
 
 /*bit0:1 support vc1 new version, 0: old version
   bit1:1 support DECODE_STATUS_PARAM_CHECK*/
-#define NEW_DRV_VER         3
+if (!decoder_firmware_version_eg(0, 4, 112))
+	#define NEW_DRV_VER         3
+else
+	#define NEW_DRV_VER         1	
 
 #define CANVAS_INDEX_START	0x78
 static unsigned int canvas_index;
